@@ -1,5 +1,5 @@
-<form action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads4841144000105221023 method='POST'
-      onSubmit='javascript:document.charset="UTF-8"; return checkMandatory4841144000105221023()' accept-charset='UTF-8'>
+<form id="contactForm" action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads4841144000105221023 method='POST'
+      onSubmit='javascript:document.charset="UTF-8"; return contactFormCheckMandatory()' accept-charset='UTF-8'>
     <input type='text' style='display:none;' name='xnQsjsdp'
            value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
     <input type='hidden' name='zc_gad' id='zc_gad' value=''>
@@ -57,11 +57,11 @@
            title='Submit'>
 
     <script>
-        function checkMandatory4841144000105221001() {
+        function contactFormCheckMandatory() {
             const mndFields = ['Last Name', 'Mobile'];
             const fldLangVal = ['Name\x20\x26\x20Surname', 'Mobile'];
             for (let i = 0; i < mndFields.length; i++) {
-                const fieldObj = document.forms['WebToLeads4841144000105221001'][mndFields[i]];
+                const fieldObj = document.forms.namedItem("contactForm")[mndFields[i]];
                 if (fieldObj) {
                     if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length === 0) {
                         alert(fldLangVal[i] + ' cannot be empty.');
@@ -69,7 +69,6 @@
                         return false;
                     }
                     else if (fieldObj.name === "Mobile") {
-                        // TODO improve by checking alphanumeric!?
                         if (fieldObj.value.length < 8 || fieldObj.value.length > 15) {
                             alert('Please fill a valid phone number.')
                             fieldObj.focus();
@@ -90,5 +89,5 @@
 
     <!-- Do not remove this --- Analytics Tracking code starts -->
     <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=0e65f475011faf7c6ff4c6942b525aed6a775c847a6e9b8a53de1a74bff27827gidf26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774gid885e3c1045bd9bdcc91bdf30f82b5696gid14f4ec16431e0686150daa43f3210513&tw=61690b96c1d0471b638f31426f38e68aa67fb7ed6da86f32dc10ad817fe55a0a'></script>
-    <!-- Do not remove this --- Analytics Tracking code ends. --></form>
-</div>
+    <!-- Do not remove this --- Analytics Tracking code ends. -->
+</form>
