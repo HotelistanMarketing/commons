@@ -1,3 +1,6 @@
 # How to use?
-Simply clone this repository under the project root and 
-import files.
+Simply add this repository as a submodule and import files.
+
+```shell
+git submodule add https://github.com/HotelistanMarketing/shared-scripts
+```
