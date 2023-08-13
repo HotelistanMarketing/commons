@@ -7,6 +7,7 @@
 const accButtons = document.getElementsByClassName("accordion-header")
 let expandedButton = accButtons[0];
 
+// TODO USE VANILLA JS!
 for (let i = 0; i < accButtons.length; i++) {
     accButtons[i].addEventListener("click", function () {
         if (expandedButton)
