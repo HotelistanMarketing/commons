@@ -5,34 +5,35 @@
  */
 
 $img_dir = getcwd();
-$formats = defined('IMG_OPT_FORMATS') ? constant('IMG_OPT_FORMATS') : ['png', 'jpeg', 'jpg'];
 $quality = defined('IMG_OPT_QUALITY') ? constant('IMG_OPT_QUALITY') : 100;
 $excl_re = defined('IMG_OPT_EXCLUDE_RE') ? constant('IMG_OPT_EXCLUDE_RE') : '/^ico-/';
 
 /**
  * @throws Exception if gd module is not enabled.
  */
-function convertToWebp($source, $quality = 100, $removeOld = false)
+function convertToWebp($src, $quality = 100, $remove_src = false)
 {
     if (!extension_loaded('gd'))
         throw new Exception('Please enable gd first!');
 
-    $dir = pathinfo($source, PATHINFO_DIRNAME);
-    $name = pathinfo($source, PATHINFO_FILENAME);
+    $dir = pathinfo($src, PATHINFO_DIRNAME);
+    $name = pathinfo($src, PATHINFO_FILENAME);
     $destination = $dir . DIRECTORY_SEPARATOR . $name . '.webp';
-    $info = getimagesize($source);
-    $isAlpha = false;
+    $info = getimagesize($src);
+    $has_alpha = false;
 
     if ($info['mime'] == 'image/jpeg')
-        $image = imagecreatefromjpeg($source);
-    elseif ($isAlpha = $info['mime'] == 'image/gif')
-        $image = imagecreatefromgif($source);
-    elseif ($isAlpha = $info['mime'] == 'image/png')
-        $image = imagecreatefrompng($source);
+        $image = imagecreatefromjpeg($src);
+    elseif ($has_alpha = $info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($src);
+    elseif ($has_alpha = $info['mime'] == 'image/png')
+        $image = imagecreatefrompng($src);
     else
-        return $source;
+        return $src;
 
-    if ($isAlpha) { // gd does not create alpha channel by default!
+    echo PHP_EOL . 'Optimizing ' . $src;
+
+    if ($has_alpha) { // gd does not create alpha channel by default!
         imagepalettetotruecolor($image);
         imagealphablending($image, true);
         imagesavealpha($image, true);
@@ -40,21 +41,26 @@ function convertToWebp($source, $quality = 100, $removeOld = false)
 
     imagewebp($image, $destination, $quality);
 
-    if ($removeOld)
-        unlink($source);
+    $file_size = filesize($src);
+    $new_file_size = filesize($destination);
+
+    echo ' (' . $file_size;
+    echo ' => ' . $new_file_size . ')';
+    echo ' (' . round(100 - ($new_file_size / $file_size) * 100, 2) . '% smaller)';
+
+    if ($remove_src)
+        unlink($src);
 
     return $destination;
 }
 
 $it = new RecursiveDirectoryIterator($img_dir);
 foreach (new RecursiveIteratorIterator($it) as $file) {
-    if (!in_array($file->getExtension(), $formats))
+    if ($file->getExtension() === 'webp' || is_dir($file))
         continue;
 
     if (preg_match($excl_re, pathinfo($file, PATHINFO_FILENAME)))
         continue;
-
-    echo PHP_EOL . 'Optimizing ' . $file . '...';
 
     /** @noinspection PhpUnhandledExceptionInspection */
     convertToWebp($file, quality: $quality);
