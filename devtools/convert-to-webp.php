@@ -1,9 +1,14 @@
 <?php
 
-$img_dir = defined('IMG_DIR') ? constant('IMG_DIR') : getcwd() . '/assets';
+/*
+ * ATTENTION: Set images directory as custom working directory before running this script!
+ */
+
+$img_dir = getcwd();
 $formats = defined('IMG_OPT_FORMATS') ? constant('IMG_OPT_FORMATS') : ['png', 'jpeg', 'jpg'];
 $quality = defined('IMG_OPT_QUALITY') ? constant('IMG_OPT_QUALITY') : 100;
 $excl_re = defined('IMG_OPT_EXCLUDE_RE') ? constant('IMG_OPT_EXCLUDE_RE') : '/^ico-/';
+
 /**
  * @throws Exception if gd module is not enabled.
  */
@@ -43,14 +48,14 @@ function convertToWebp($source, $quality = 100, $removeOld = false)
 
 $it = new RecursiveDirectoryIterator($img_dir);
 foreach (new RecursiveIteratorIterator($it) as $file) {
-    if (in_array($file->getExtension(), $formats)) {
-        if (preg_match($excl_re, pathinfo($file, PATHINFO_FILENAME)))
-            continue;
+    if (!in_array($file->getExtension(), $formats))
+        continue;
 
-        try {
-            echo 'Optimizing ' . $file . '...' . PHP_EOL;
-            convertToWebp($file, quality: $quality);
-        } catch (Exception $e) {
-        }
-    }
+    if (preg_match($excl_re, pathinfo($file, PATHINFO_FILENAME)))
+        continue;
+
+    echo PHP_EOL . 'Optimizing ' . $file . '...';
+
+    /** @noinspection PhpUnhandledExceptionInspection */
+    convertToWebp($file, quality: $quality);
 }
