@@ -5,7 +5,7 @@
  */
 
 $img_dir = getcwd();
-$quality = defined('IMG_OPT_QUALITY') ? constant('IMG_OPT_QUALITY') : 100;
+$quality = defined('IMG_OPT_QUALITY') ? constant('IMG_OPT_QUALITY') : 90;
 $excl_re = defined('IMG_OPT_EXCLUDE_RE') ? constant('IMG_OPT_EXCLUDE_RE') : '/^ico-/';
 
 /**
