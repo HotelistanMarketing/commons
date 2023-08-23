@@ -2,5 +2,5 @@
 Simply add this repository as a submodule and import files.
 
 ```shell
-git submodule add https://github.com/HotelistanMarketing/shared-scripts
+git submodule add https://github.com/HotelistanMarketing/commons
 ```
