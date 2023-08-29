@@ -1,0 +1,51 @@
+#whatsapp-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  transition: transform .2s ease-in-out, filter .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.04);
+    filter: brightness(110%);
+  }
+
+  .wp-dots {
+    position: absolute;
+    top: 0;
+    margin-top: 7px;
+    margin-left: 8px;
+    display: flex;
+    column-gap: 8px;
+  }
+
+  .wp-icon {
+    width: 100px;
+  }
+
+  @keyframes typing-wave {
+    0%, 60%, 100% {
+      transform: initial;
+    }
+    30% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4cb050;
+    border-radius: 50%;
+    animation: typing-wave .7s linear -1.3s;
+    animation-iteration-count: infinite;
+
+    &.two {
+      animation-delay: -1.1s;
+    }
+
+    &.three {
+      animation-delay: -1s;
+    }
+  }
+}
