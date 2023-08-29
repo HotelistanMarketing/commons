@@ -1,0 +1,20 @@
+// QUERY VALUES
+
+@mobile-max-width: 600px; // Extra small devices (phones)
+@tablet-min-width: 600px; // Small devices (portrait tablets and large phones)
+@l-tablets-min-width: 768px; // Medium devices (landscape tablets)
+@desktop-min-width: 992px; // Large devices (laptops/desktops)
+@large-min-width: 1280px; // Extra large devices (large laptops and desktops)
+
+// QUERIES
+
+@media-mobile: ~"only screen and (max-width: @{mobile-max-width})";
+@media-tablet: ~"only screen and (min-width: @{tablet-min-width})";
+@media-l-tablet: ~"only screen and (min-width: @{l-tablets-min-width})";
+@media-desktop: ~"only screen and (min-width: @{desktop-min-width})";
+@media-large: ~"only screen and (min-width: @{large-min-width})";
+@media-retina: ~"(min-resolution:192dpi)";
+
+// SKELETON
+@page-width: 1280px;
+@page-padding: 10px;
