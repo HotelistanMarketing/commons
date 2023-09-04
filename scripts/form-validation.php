@@ -1,6 +1,6 @@
 <script>
     function formValidation() {
-        const mndFields = ['Last_Name', 'Mobile'];
+        const mndFields = ['Last_Name', 'Phone'];
         for (let i = 0; i < mndFields.length; i++) {
             const fieldObj = document.forms.namedItem("contactForm")[mndFields[i]];
             if (fieldObj) {
@@ -9,7 +9,7 @@
                     alert("<?= TR['form_empty_field_warning'] ?>".replace("%s", fieldObj.placeholder));
                     return false;
                 }
-                else if (fieldObj.id === "Mobile") {
+                else if (fieldObj.name === "Phone") {
                     // TODO improve by checking alphanumeric!
                     if (fieldObj.value.length < 8 || fieldObj.value.length > 15) {
                         fieldObj.focus();
