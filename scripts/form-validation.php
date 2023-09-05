@@ -1,23 +1,19 @@
 <script>
     function formValidation() {
-        const mndFields = ['Last_Name', 'Phone'];
-        for (let i = 0; i < mndFields.length; i++) {
-            const fieldObj = document.forms.namedItem("contactForm")[mndFields[i]];
-            if (fieldObj) {
-                if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length === 0) {
-                    fieldObj.focus();
-                    alert("<?= TR['form_empty_field_warning'] ?>".replace("%s", fieldObj.placeholder));
-                    return false;
-                }
-                else if (fieldObj.name === "Phone") {
-                    // TODO improve by checking alphanumeric!
-                    if (fieldObj.value.length < 8 || fieldObj.value.length > 15) {
-                        fieldObj.focus();
-                        alert("<?= TR['form_phone_validation'] ?>")
-                        return false;
-                    }
-                }
-            }
+        const form = document.forms.namedItem("contactForm");
+        const nameInput = form['Last_Name'];
+        if (nameInput && nameInput.value.replace(/^\s+|\s+$/g, '').length === 0) {
+            alert("<?= TR['form_empty_field_warning'] ?>".replace("%s", nameInput.placeholder));
+            nameInput.focus();
+            return false;
         }
+
+        const isPhoneNumberValid = iti.isValidNumber();
+        if (!isPhoneNumberValid) {
+            alert("<?= TR['form_phone_validation'] ?>")
+            form['Phone'].focus();
+        }
+
+        return isPhoneNumberValid;
     }
 </script>
