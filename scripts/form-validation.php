@@ -8,7 +8,7 @@
             return false;
         }
 
-        const isPhoneNumberValid = iti.isValidNumber();
+        const isPhoneNumberValid = window?.iti?.isValidNumber() || iti?.isValidNumber();
         if (!isPhoneNumberValid) {
             alert("<?= TR['form_phone_validation'] ?>")
             form['Phone'].focus();
