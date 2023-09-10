@@ -8,10 +8,12 @@
             return false;
         }
 
-        const isPhoneNumberValid = window?.iti?.isValidNumber() || iti?.isValidNumber();
+        const input = form['Phone'];
+        const iti = window.intlTelInputGlobals.getInstance(input);
+        const isPhoneNumberValid = iti.isValidNumber();
         if (!isPhoneNumberValid) {
             alert("<?= TR['form_phone_validation'] ?>")
-            form['Phone'].focus();
+            input.focus();
         }
 
         return isPhoneNumberValid;
