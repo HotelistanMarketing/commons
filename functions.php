@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 // UTILITY
 
@@ -21,6 +21,11 @@ function get_script(string $script, bool $common = false): string
         return $_SERVER['DOCUMENT_ROOT'] . '/commons/scripts/' . $script;
     else
         return $_SERVER['DOCUMENT_ROOT'] . '/scripts/' . $script;
+}
+
+function get_page_style($file_name): string
+{
+    return '/pages/' . basename(dirname($_SERVER['SCRIPT_FILENAME'])) . '/' . $file_name;
 }
 
 // TEMPLATES
