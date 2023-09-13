@@ -1,5 +1,30 @@
 <?php
 
+// UTILITY
+
+function trim_phone_number(string $readable_number): string
+{
+    return preg_replace('/[\s()]/', '', $readable_number);
+}
+
+function get_template(string $template, bool $common = false): string
+{
+    if ($common)
+        return $_SERVER['DOCUMENT_ROOT'] . '/commons/templates/' . $template;
+    else
+        return $_SERVER['DOCUMENT_ROOT'] . '/templates/' . $template;
+}
+
+function get_script(string $script, bool $common = false): string
+{
+    if ($common)
+        return $_SERVER['DOCUMENT_ROOT'] . '/commons/scripts/' . $script;
+    else
+        return $_SERVER['DOCUMENT_ROOT'] . '/scripts/' . $script;
+}
+
+// TEMPLATES
+
 /**
  * @param string $name replace spaces with '+' signs
  * @param string $weights use semicolon delimiter
