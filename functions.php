@@ -46,3 +46,10 @@ function get_google_font(string $name, string $weights = '400;700', string $disp
     <?php
     // @formatter:on
 }
+
+function get_preload_style(string $href): void
+{
+    ?>
+    <link rel="preload" href="<?= $href ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <?php
+}
