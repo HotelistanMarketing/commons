@@ -1,5 +1,7 @@
 <?php /** @noinspection PhpUnused */
 
+define('WEBP_SUPPORT', str_contains($_SERVER['HTTP_ACCEPT'], 'image/webp'));
+
 // UTILITY
 
 function trim_phone_number(string $readable_number): string
@@ -26,6 +28,22 @@ function get_script(string $script, bool $common = false): string
 function get_page_style($file_name): string
 {
     return '/pages/' . basename(dirname($_SERVER['SCRIPT_FILENAME'])) . '/' . $file_name;
+}
+
+/**
+ * @return string webp version of the source if available, or the source itself.
+ */
+function get_webp(string $source): string
+{
+    if (WEBP_SUPPORT) {
+        $dir = pathinfo($source, PATHINFO_DIRNAME);
+        $name = pathinfo($source, PATHINFO_FILENAME);
+        $destination = $dir . '/' . $name . '.webp';
+
+        return file_exists($_SERVER['DOCUMENT_ROOT'] . $destination) ? $destination : $source;
+    }
+
+    return $source;
 }
 
 // TEMPLATES

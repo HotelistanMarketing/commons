@@ -1,16 +1,19 @@
-<?php
-
-/* TODO improve WhatsApp FAB!
- * Use a svg icon instead!
- */
-
-?>
-
-<a id="whatsapp-fab" href="<?= WHATSAPP_LINK ?>" target="_blank">
-    <img class="wp-icon" src="/assets/ico-wp.png" width="130" height="91" alt="WhatsApp">
-    <div class="wp-dots">
-        <div class="dot one"></div>
-        <div class="dot two"></div>
-        <div class="dot three"></div>
-    </div>
+<a id="whatsapp-fab" onclick="togglePopup()">
+    <img src="<?php get_webp('wp-white.png') ?>" alt="" width="1500" height="1508">
+    <span><?= TR['whatsapp_button'] ?></span>
 </a>
+
+<?php include get_template("wp-form", common: true) ?>
+
+<script>
+    function togglePopup() {
+        const popupForm = document.getElementById("popup-form")
+        popupForm.classList.toggle("visible")
+    }
+
+    const popupForm = document.getElementById("popup-form")
+    popupForm.onclick = function (event) {
+        if (!event.target.closest(".popup"))
+            popupForm.classList.toggle("visible")
+    }
+</script>
