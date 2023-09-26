@@ -8,7 +8,6 @@
               action='https://crm.zoho.com/crm/WebToLeadForm'
               name='<?= FORM_NAME ?>'
               method='POST'
-              onSubmit='return formValidation()'
               accept-charset='UTF-8'>
 
             <label for='Last_Name'><?= TR['form_name'] ?></label>
