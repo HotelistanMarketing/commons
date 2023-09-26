@@ -1,5 +1,5 @@
 <a id="whatsapp-fab" onclick="togglePopup()">
-    <img src="<?php get_webp('wp-white.png') ?>" alt="" width="1500" height="1508">
+    <img src="/assets/wp-white.png" alt="" width="1500" height="1508">
     <span><?= TR['whatsapp_button'] ?></span>
 </a>
 
