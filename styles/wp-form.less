@@ -1,0 +1,134 @@
+
+.overlay {
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .9);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target, .overlay.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 0 auto;
+  top: 32%;
+  padding: 30px 15px 20px 15px;
+  background: #fff;
+  border-radius: 5px;
+  width: 85%;
+  min-width: max(300px, min-content);
+  max-width: 85%;
+  position: relative;
+  transition: all .5s ease-in-out;
+  overflow: auto;
+
+  @media @media-l-tablet {
+    width: 30%;
+  }
+
+  h1 {
+    color: #1f1f1f;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    text-align: center;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: #777777;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    transition: color 200ms;
+    font-size: 24px;
+    font-weight: 700;
+    color: #c9c9c9;
+  }
+
+  .close-button:hover {
+    color: #212121;
+  }
+}
+
+#popup-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    row-gap: 10px;
+
+    input:not(.button) {
+      padding: 12px 12px;
+      border: 1px solid #ececec;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #1A1A1A;
+      font-size: 14px;
+      line-height: 22px;
+      width: 100%;
+      max-height: 36px;
+      outline: 1px solid rgba(177, 207, 242, 0);
+      transition: outline-color .2s;
+
+      &::placeholder {
+        color: #ADADAD;
+      }
+
+      &:focus {
+        outline-color: #b1cff2;
+      }
+    }
+
+    .button {
+      width: 100%;
+      min-width: 100%;
+      border-radius: 3px;
+      color: #fafafa;
+      background: #71e29b;
+      font-size: 14px;
+      max-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        box-shadow: 0 0 3px 1px #71e29b;
+      }
+    }
+
+    label, .hidden {
+      display: none;
+    }
+
+    .iti__selected-flag {
+      padding-top: 0 !important;
+      height: 100% !important;
+    }
+
+    .iti__selected-dial-code {
+      font-size: 14px;
+    }
+
+    input#Mobile {
+      padding-left: 52px;
+    }
+  }
+}
