@@ -1,9 +1,8 @@
 <script>
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', event => {
-            event.preventDefault()
-            if (formValidation(event.target))
-                event.target.submit()
+            if (!formValidation(event.target))
+                event.preventDefault()
         });
     })
 
