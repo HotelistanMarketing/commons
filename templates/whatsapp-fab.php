@@ -3,7 +3,7 @@
     <span><?= TR['whatsapp_button'] ?></span>
 </a>
 
-<?php include get_template("wp-form", common: true) ?>
+<?php include get_template("wp-form.php", common: true) ?>
 
 <script>
     function togglePopup() {
