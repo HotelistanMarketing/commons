@@ -22,13 +22,13 @@
             input.focus();
         }
 
+        if (isPhoneNumberValid) {
+            const urlParams = new URLSearchParams(window.location.search)
+            form.querySelectorAll("input[data-auto-fetch-param]").forEach(input => {
+                input.value = urlParams.get(input.getAttribute("data-auto-fetch-param"))
+            })
+        }
+
         return isPhoneNumberValid;
     }
-
-    window.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search)
-        form.querySelectorAll("input[name^='utm_']").forEach(input => {
-            input.value = urlParams.get(input.name)
-        })
-    })
 </script>
