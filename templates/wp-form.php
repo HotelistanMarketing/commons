@@ -62,7 +62,7 @@
             <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid_">
 
             <button type="submit" id='formsubmit' class='formsubmit button wp-link' title='Submit'>
-                <?= TR['form_button'] ?>
+                <?= TR['form_button_wp'] ?>
             </button>
 
             <?php // Do not remove this --- Analytics Tracking code starts ?>
