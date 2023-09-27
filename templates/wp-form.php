@@ -60,7 +60,6 @@
             <input type="hidden" id="LEADCF38" name="LEADCF38" value=""> <?php // utm_keyword ?>
             <input type="hidden" id="LEADCF39" name="LEADCF39" value=""> <?php // utm_network ?>
             <input type="hidden" id="LEADCF40" name="LEADCF40" value=""> <?php // gclid_ ?>
-            <input type="hidden" id="glcid" name="glcid" value="">
 
             <button type="submit" id='formsubmit' class='formsubmit button wp-link' title='Submit'>
                 <?= TR['form_button'] ?>
