@@ -22,6 +22,13 @@
             input.focus();
         }
 
+        if (isPhoneNumberValid) {
+            const urlParams = new URLSearchParams(window.location.search)
+            form.querySelectorAll("input[name^='utm_']").forEach(input => {
+                input.value = urlParams.get(input.name)
+            })
+        }
+
         return isPhoneNumberValid;
     }
 </script>
