@@ -54,13 +54,13 @@
             <input type='text' style='display:none;' name='actionType' value='TGVhZHM='>
             <input type='text' style='display:none;' name='returnURL' value='<?= FORM_RETURN_URL ?>'>
 
-            <input type='hidden' id='zc_gad' name='zc_gad' value="" data-auto-fetch-param="zc_gad">
-            <input type="hidden" id="LEADCF35" name="LEADCF35" value="" data-auto-fetch-param="utm_source">
-            <input type="hidden" id="LEADCF36" name="LEADCF36" value="" data-auto-fetch-param="utm_medium">
-            <input type="hidden" id="LEADCF37" name="LEADCF37" value="" data-auto-fetch-param="utm_matchtype">
-            <input type="hidden" id="LEADCF38" name="LEADCF38" value="" data-auto-fetch-param="utm_keyword">
-            <input type="hidden" id="LEADCF39" name="LEADCF39" value="" data-auto-fetch-param="utm_network">
-            <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid">
+            <input type='hidden' id='zc_gad' name='zc_gad' value="<?= $_GET['zc_gad'] ?? '' ?>">
+            <input type="hidden" id="LEADCF35" name="LEADCF35" value="<?= $_GET['utm_source'] ?? '' ?>">
+            <input type="hidden" id="LEADCF36" name="LEADCF36" value="<?= $_GET['utm_medium'] ?? '' ?>">
+            <input type="hidden" id="LEADCF37" name="LEADCF37" value="<?= $_GET['utm_matchtype'] ?? '' ?>">
+            <input type="hidden" id="LEADCF38" name="LEADCF38" value="<?= $_GET['utm_keyword'] ?? '' ?>">
+            <input type="hidden" id="LEADCF39" name="LEADCF39" value="<?= $_GET['utm_network'] ?? '' ?>">
+            <input type="hidden" id="LEADCF40" name="LEADCF40" value="<?= $_GET['gclid'] ?? '' ?>">
 
             <button type="submit" id='formsubmit' class='formsubmit wp-link' title='Submit'>
                 <?= TRC['wp_form_button'] ?>
