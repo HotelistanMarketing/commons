@@ -4,7 +4,7 @@
         <a class="close-button" onclick="togglePopup()">&times;</a>
         <p><?= TRC['wp_form_description'] ?></p>
 
-        <form id="contactForm"
+        <form id="wp-form"
               action='https://crm.zoho.com/crm/WebToLeadForm'
               name='<?= FORM_NAME ?>'
               method='POST'
@@ -62,7 +62,7 @@
             <input type="hidden" id="LEADCF39" name="LEADCF39" value="" data-auto-fetch-param="utm_network">
             <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid">
 
-            <button type="submit" id='formsubmit' class='formsubmit button wp-link' title='Submit'>
+            <button type="submit" id='formsubmit' class='formsubmit wp-link' title='Submit'>
                 <?= TRC['wp_form_button'] ?>
             </button>
 

@@ -1,3 +1,4 @@
+// TODO commonize generic form style!
 
 .overlay {
   z-index: 101;
@@ -97,20 +98,26 @@
       }
     }
 
-    .button {
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 5px 25px;
+      text-align: center;
       width: 100%;
-      min-width: 100%;
       border-radius: 3px;
       color: #fafafa;
       background: #71e29b;
+      font-weight: 700;
       font-size: 14px;
-      max-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      line-height: 26px;
 
       &:hover {
         box-shadow: 0 0 3px 1px #71e29b;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #212121;
       }
     }
 
@@ -128,7 +135,7 @@
     }
 
     .iti__country-list {
-      position: fixed !important;  // Put it above popup!
+      position: fixed !important; // Put it above popup!
     }
 
     input#Mobile {
