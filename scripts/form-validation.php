@@ -9,9 +9,11 @@
     function formValidation(form) {
         const nameInput = form['Last_Name'];
         if (nameInput && nameInput.value.replace(/^\s+|\s+$/g, '').length === 0) {
-            alert("<?= TRC['form_empty_field_warning'] ?>".replace("%s", nameInput.placeholder));
-            nameInput.focus();
-            return false;
+            if (!form.hasAttribute("data-optional-name")) {
+                alert("<?= TRC['form_empty_field_warning'] ?>".replace("%s", nameInput.placeholder));
+                nameInput.focus();
+                return false;
+            }
         }
 
         const input = form['Phone'];

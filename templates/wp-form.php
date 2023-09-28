@@ -8,7 +8,8 @@
               action='https://crm.zoho.com/crm/WebToLeadForm'
               name='<?= FORM_NAME ?>'
               method='POST'
-              accept-charset='UTF-8'>
+              accept-charset='UTF-8'
+              data-optional-name>
 
             <label for='Last_Name'><?= TRC['form_name_opt'] ?></label>
             <input type='text' id='Last_Name' name='Last Name' maxlength='80' placeholder="<?= TRC['form_name_opt'] ?>">
