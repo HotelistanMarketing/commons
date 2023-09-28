@@ -60,7 +60,7 @@
             <input type="hidden" id="LEADCF37" name="LEADCF37" value="" data-auto-fetch-param="utm_matchtype">
             <input type="hidden" id="LEADCF38" name="LEADCF38" value="" data-auto-fetch-param="utm_keyword">
             <input type="hidden" id="LEADCF39" name="LEADCF39" value="" data-auto-fetch-param="utm_network">
-            <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid_">
+            <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid">
 
             <button type="submit" id='formsubmit' class='formsubmit button wp-link' title='Submit'>
                 <?= TRC['wp_form_button'] ?>
