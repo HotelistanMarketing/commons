@@ -1,8 +1,8 @@
 <div id="popup-form" class="overlay">
     <div class="popup">
-        <h1>Send WhatsApp Message</h1>
+        <h1><?= TRC['wp_form_title'] ?></h1>
         <a class="close-button" onclick="togglePopup()">&times;</a>
-        <p>Please fill the form, and you'll be redirected to WhatsApp.</p>
+        <p><?= TRC['wp_form_description'] ?></p>
 
         <form id="contactForm"
               action='https://crm.zoho.com/crm/WebToLeadForm'
@@ -62,7 +62,7 @@
             <input type="hidden" id="LEADCF40" name="LEADCF40" value="" data-auto-fetch-param="gclid_">
 
             <button type="submit" id='formsubmit' class='formsubmit button wp-link' title='Submit'>
-                <?= TR['form_button_wp'] ?>
+                <?= TRC['wp_form_button'] ?>
             </button>
 
             <?php // Do not remove this --- Analytics Tracking code starts ?>
