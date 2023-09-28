@@ -9,7 +9,7 @@
     function formValidation(form) {
         const nameInput = form['Last_Name'];
         if (nameInput && nameInput.value.replace(/^\s+|\s+$/g, '').length === 0) {
-            alert("<?= TR['form_empty_field_warning'] ?>".replace("%s", nameInput.placeholder));
+            alert("<?= TRC['form_empty_field_warning'] ?>".replace("%s", nameInput.placeholder));
             nameInput.focus();
             return false;
         }
@@ -18,7 +18,7 @@
         const iti = window.intlTelInputGlobals.getInstance(input);
         const isPhoneNumberValid = iti.isValidNumber();
         if (!isPhoneNumberValid) {
-            alert("<?= TR['form_phone_validation'] ?>")
+            alert("<?= TRC['form_phone_validation'] ?>")
             input.focus();
         }
 
