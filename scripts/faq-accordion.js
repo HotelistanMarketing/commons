@@ -4,8 +4,8 @@
  * This script has LOW priority since FAQs are usually placed above footer.
  */
 
-const accButtons = document.getElementsByClassName("accordion-header")
-let expandedButton = accButtons[0];
+const accButtons = document.querySelectorAll("#faq .accordion-header")
+let expandedButton = accButtons?.item(0).classList.contains("expanded") ? accButtons[0] : null
 
 // TODO USE VANILLA JS!
 for (let i = 0; i < accButtons.length; i++) {
