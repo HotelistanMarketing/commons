@@ -11,7 +11,7 @@ for (let i = 0; i < accButtons.length; i++) {
         if (expandedButton)
             expandedButton.classList.toggle("expanded")
 
-        if (expandedButton === this) {
+        if (expandedButton !== this) {
             this.classList.toggle("expanded")
             expandedButton = this
         }
