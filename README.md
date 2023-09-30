@@ -9,6 +9,15 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.1
+- **scripts/faq-accordion.js** has been updated:
+  Removed JQuery code. We may **remove JQuery** scripts from now on.
+
+
+- **styles/faq-accordion.less** introduced:
+  **Import this style** to make animations work.
+  Additional style changes might be needed per project.
+  
 ## 1.0
 - **scripts/faq-accordion.js** has been updated:
 
