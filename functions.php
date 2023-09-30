@@ -53,3 +53,12 @@ function get_preload_style(string $href): void
     <link rel="preload" href="<?= $href ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <?php
 }
+
+function get_wp_button(string $text, string $href = null): void
+{
+    ?>
+    <a class="button" href="<?= $href ?? WHATSAPP_LINK ?>" target="_blank">
+        <?= $text ?>
+    </a>
+    <?php
+}

@@ -9,6 +9,9 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.2
+- Use `get_wp_button(...)` to commonize **WhatsApp buttons** across projects.
+
 ## 1.1
 - **scripts/faq-accordion.js** has been updated:
   Removed JQuery code. We may **remove JQuery** scripts from now on.
