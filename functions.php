@@ -62,3 +62,10 @@ function get_wp_button(string $text, string $href = null): void
     </a>
     <?php
 }
+
+function get_form_analytics_script(string $rid): void
+{
+    ?>
+    <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=<?= $rid ?>'></script>
+    <?php
+}

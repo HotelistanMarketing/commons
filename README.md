@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.3
+- Removed analytics scripts from form templates. 
+  Instead, use `get_form_analytics_script(...)` before the body close tag.
+
 ## 1.2
 - Use `get_wp_button(...)` to commonize **WhatsApp buttons** across projects.
 

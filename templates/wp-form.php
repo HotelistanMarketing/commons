@@ -65,11 +65,6 @@
             <button type="submit" id='formsubmit' class='formsubmit wp-link' title='Submit'>
                 <?= TRC['wp_form_button'] ?>
             </button>
-
-            <?php // Do not remove this --- Analytics Tracking code starts ?>
-            <script id='wf_anal'
-                    src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=<?= FORM_ANAL_RID ?>'>
-            </script>
         </form>
     </div>
 </div>
