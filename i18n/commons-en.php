@@ -10,7 +10,7 @@ const TRC = array(
     "form_phone_validation" => "Please fill a valid phone number.",
 
     // WP FAB
-    "wp_fab" => "Contact Us",
+    "wp_fab" => "Contact us",
 
     // WP FORM
     "wp_form_title" => "Send WhatsApp Message",
