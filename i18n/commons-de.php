@@ -9,6 +9,9 @@ const TRC = array(
     "form_empty_field_warning" => "%s muss ausgefüllt werden.",
     "form_phone_validation" => "Bitte geben Sie eine gültige Telefonnummer ein.",
 
+    // WP FAB
+    "wp_fab" => "Kontaktieren Sie uns",
+
     // WP FORM
     "wp_form_title" => "WhatsApp-Nachricht senden",
     "wp_form_description" => "Füllen Sie bitte das Formular aus, und Sie werden zu WhatsApp weitergeleitet.",
