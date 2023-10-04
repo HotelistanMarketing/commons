@@ -1,25 +1,23 @@
-// TODO give it a two state
-// 1 - collapsed - circle - icon only
-// 2 - extended - squircle - side by side  icon and text
+@import "dimensions";
 
 #whatsapp-fab {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 100;
-  transition: filter .4s;
 
   display: flex;
   align-items: center;
-  column-gap: 10px;
   padding: 5px 10px;
   border-radius: 5px;
   color: #fff;
   background-color: rgba(54, 218, 78, .92);
   cursor: pointer;
-  font-size: 16px;
   font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
   text-decoration: none;
+  transition: filter .4s;
 
   &:hover {
     filter: brightness(110%);
@@ -28,5 +26,27 @@
   & img {
     width: 32px;
     height: 32px;
+  }
+
+  & > span {
+    margin-left: 10px;
+  }
+
+  @media @media-mobile {
+    & > span {
+      max-height: 24px;
+      transition: margin-left .1s, padding 500ms;
+      overflow: hidden;
+    }
+
+    &.collapsed {
+      padding: 5px;
+      border-radius: 50%;
+
+      span {
+        max-width: 0;
+        margin-left: 0;
+      }
+    }
   }
 }
