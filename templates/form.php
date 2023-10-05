@@ -9,7 +9,7 @@
     <input type='text' id='Last_Name' name='Last Name' maxlength='80' placeholder="<?= TRC['form_name'] ?>">
 
     <label for='Phone'><?= TRC['form_phone'] ?></label>
-    <input type='text' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>">
+    <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>">
 
     <label for='Email'><?= TRC['form_mail'] ?></label>
     <input type='text' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">

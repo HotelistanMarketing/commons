@@ -15,7 +15,7 @@
             <input type='text' id='Last_Name' name='Last Name' maxlength='80' placeholder="<?= TRC['form_name_opt'] ?>">
 
             <label for='Phone'><?= TRC['form_phone'] ?></label>
-            <input type='text' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>">
+            <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>">
 
             <label for='Country'>Country</label>
             <input type='hidden' id='Country' name='Country' maxlength='100' value='DefaultCountry'>
