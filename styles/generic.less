@@ -33,3 +33,12 @@ img {
 picture {
   line-height: 0; // Remove space underneath images - https://stackoverflow.com/a/31445364
 }
+
+// WORKAROUND for Chrome's weird bug which triggers transitions on page load
+// Add "preload" class to the body and remove it after the "DOMContentLoaded" event.
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}

@@ -11,6 +11,8 @@ will be listed here.
 
 ## 1.5
 - Use **styles/generic.less** to commonize generic styles across projects.
+- Use **scripts/fix-transition-glitch.js** along with generic styles to 
+  fix Chrome's on load transitions. Add `preload` class to body to make it work.
 
 ## 1.4
 - Common WhatsApp FAB localization.
