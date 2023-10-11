@@ -9,11 +9,14 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.5
+- Use **styles/generic.less** to commonize generic styles across projects.
+
 ## 1.4
 - Common WhatsApp FAB localization.
 
 ## 1.3
-- Removed analytics scripts from form templates. 
+- Removed analytics scripts from form templates.
   Instead, use `get_form_analytics_script(...)` before the body close tag.
 
 ## 1.2
@@ -27,7 +30,7 @@ will be listed here.
 - **styles/faq-accordion.less** introduced:
   **Import this style** to make animations work.
   Additional style changes might be needed per project.
-  
+
 ## 1.0
 - **scripts/faq-accordion.js** has been updated:
 

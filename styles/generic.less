@@ -1,0 +1,35 @@
+@import "dimensions";
+
+// UNIVERSAL BORDER BOX & SMOOTH SCROLL
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// NORMALIZE
+
+@import (inline) "styles/normalize.min.css";
+@import (inline) "styles/min-reset.css";
+
+// GENERICS & COMMONS
+
+.container {
+  max-width: @page-width;
+  margin: 0 auto;
+  padding-left: @page-padding;
+  padding-right: @page-padding;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+picture {
+  line-height: 0; // Remove space underneath images - https://stackoverflow.com/a/31445364
+}
