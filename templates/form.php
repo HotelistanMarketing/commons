@@ -14,42 +14,18 @@
     <label for='Email'><?= TRC['form_mail'] ?></label>
     <input type='text' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">
 
-    <label for='Country'>Country</label>
     <input type='hidden' id='Country' name='Country' maxlength='100' value='DefaultCountry'>
+    <input type='hidden' id='Lead_Status' name='Lead Status' value='New'>
+    <input type='hidden' id='LEADCF2' name='LEADCF2' value='<?= LEAD_LANGUAGE ?>'>
+    <input type='hidden' id='Lead_Source' name='Lead Source' value='<?= LEAD_SOURCE ?>'>
+    <input type='hidden' id='LEADCF48' name='LEADCF48' value='<?= LEAD_INTEREST ?>'>
+    <input type='hidden' id='LEADCF15' name='LEADCF15' value='<?= LEAD_PROCEDURE ?>'>
+    <input type='hidden' id='Description' name='Description' value='<?= LEAD_PROCEDURE ?>'>
 
-    <label for='Lead_Status'>Lead Status</label>
-    <select class='hidden' id='Lead_Status' name='Lead Status'>
-        <option selected value='New'></option>
-    </select>
-
-    <label for='LEADCF2'>Language</label>
-    <select class='hidden' id='LEADCF2' name='LEADCF2'>
-        <option selected value='<?= LEAD_LANGUAGE ?>'></option>
-    </select>
-
-    <label for='Lead_Source'>Lead Source</label>
-    <select class='hidden' id='Lead_Source' name='Lead Source'>
-        <option selected value='<?= LEAD_SOURCE ?>'></option>
-    </select>
-
-    <label for='LEADCF48'>Interest</label>
-    <select class='hidden' id='LEADCF48' name='LEADCF48' multiple>
-        <option selected value='<?= LEAD_INTEREST ?>'></option>
-    </select>
-
-    <label for='LEADCF15'>Procedure</label>
-    <select class='hidden' id='LEADCF15' name='LEADCF15' multiple>
-        <option selected value='<?= LEAD_PROCEDURE ?>'></option>
-    </select>
-
-    <label for='Description'>Description</label>
-    <textarea class="hidden" id='Description' name='Description'><?= LEAD_PROCEDURE ?></textarea>
-
-    <input type='text' style='display:none;' name='xnQsjsdp'
-           value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
-    <input type='text' style='display:none;' name='xmIwtLD' value='<?= FORM_xmIwtLD ?>'>
-    <input type='text' style='display:none;' name='actionType' value='TGVhZHM='>
-    <input type='text' style='display:none;' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
+    <input type='hidden' name='xnQsjsdp' value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
+    <input type='hidden' name='xmIwtLD' value='<?= FORM_xmIwtLD ?>'>
+    <input type='hidden' name='actionType' value='TGVhZHM='>
+    <input type='hidden' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
 
     <input type='hidden' id='zc_gad' name='zc_gad' value="<?= $_GET['zc_gad'] ?? '' ?>">
     <input type="hidden" id="LEADCF35" name="LEADCF35" value="<?= $_GET['utm_source'] ?? '' ?>">
