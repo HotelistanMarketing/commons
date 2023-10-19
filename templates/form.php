@@ -6,13 +6,13 @@
       accept-charset='UTF-8'>
 
     <label for='Last_Name'><?= TRC['form_name'] ?></label>
-    <input type='text' id='Last_Name' name='Last Name' maxlength='80' placeholder="<?= TRC['form_name'] ?>">
+    <input type='text' id='Last_Name' name='Last Name' maxlength='30' placeholder="<?= TRC['form_name'] ?>" required>
 
     <label for='Phone'><?= TRC['form_phone'] ?></label>
-    <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>">
+    <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>" required>
 
     <label for='Email'><?= TRC['form_mail'] ?></label>
-    <input type='text' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">
+    <input type='email' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">
 
     <input type='hidden' id='Country' name='Country' maxlength='100' value='DefaultCountry'>
     <input type='hidden' id='Lead_Status' name='Lead Status' value='New'>
