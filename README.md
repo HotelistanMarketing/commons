@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.6
+- **scripts/form-validation.php** changed to a **JS** file.<br>
+  Include the JS in the body-end.
+
 ## 1.5
 - Use **styles/generic.less** to commonize generic styles across projects.
 - Use **scripts/fix-transition-glitch.js** along with generic styles to 

@@ -9,7 +9,8 @@
     <input type='text' id='Last_Name' name='Last Name' maxlength='30' placeholder="<?= TRC['form_name'] ?>" required>
 
     <label for='Phone'><?= TRC['form_phone'] ?></label>
-    <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>" required>
+    <input type='tel' id='Phone' name='Phone' maxlength='15' placeholder="<?= TRC['form_phone'] ?>" required
+           data-warning-msg="<?= TRC['form_phone_validation'] ?>">
 
     <label for='Email'><?= TRC['form_mail'] ?></label>
     <input type='email' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">
