@@ -41,9 +41,12 @@ function get_localization(string $fileName, string $locale, bool $common = false
     else
         $path = $_SERVER['DOCUMENT_ROOT'] . '/i18n/' . $fileName . '-' . $locale . '.php';
 
-    // Fallback to the locale without a country code
-    if (!file_exists($path) && str_contains($locale, '-'))
-        return get_localization($fileName, explode('-', $locale, 2)[0], $common);
+    if (!file_exists($path)) {
+        if (str_contains($locale, '-')) // Fallback to the locale without a country code
+            return get_localization($fileName, explode('-', $locale, 2)[0], $common);
+        else if (!str_starts_with($locale, 'en'))  // Fallback to default language
+            return get_localization($fileName, 'en', $common);
+    }
 
     return $path;
 }
