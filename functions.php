@@ -28,6 +28,26 @@ function get_page_style($file_name): string
     return '/pages/' . basename(dirname($_SERVER['SCRIPT_FILENAME'])) . '/' . $file_name;
 }
 
+/**
+ * @param string $fileName without locale & extension
+ * @param string $locale ISO language code (with our without country code)
+ * @param bool $common
+ * @return string full path of the requested file
+ */
+function get_localization(string $fileName, string $locale, bool $common = false): string
+{
+    if ($common)
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/commons/i18n/' . $fileName . '-' . $locale . '.php';
+    else
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/i18n/' . $fileName . '-' . $locale . '.php';
+
+    // Fallback to the locale without a country code
+    if (!file_exists($path) && str_contains($locale, '-'))
+        return get_localization($fileName, explode('-', $locale, 2)[0], $common);
+
+    return $path;
+}
+
 // TEMPLATES
 
 /**

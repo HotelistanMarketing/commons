@@ -9,6 +9,9 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.7
+- Use `get_localization(...)` to include localizations in a standardized way.
+
 ## 1.6
 - **scripts/form-validation.php** changed to a **JS** file.<br>
   Include the JS in the body-end.
