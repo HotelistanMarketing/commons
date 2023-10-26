@@ -24,6 +24,17 @@ will be listed here.
    }
    ```
 2. Run `npm install`, and add **package.lock.json** to git
+3. Add `post-install-cmd` or `compile` script to **composer.json**:
+    ```json
+    {
+        "scripts": {
+            "post-install-cmd": [
+                "chmod +x ./commons/devtools/run-lessc.sh",
+                "./commons/devtools/run-lessc.sh"
+            ]
+        }
+    }
+    ```
 3. You may now remove compiled css files from git
 
 ## 1.7
