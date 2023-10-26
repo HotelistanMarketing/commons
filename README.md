@@ -9,6 +9,23 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.8
+**devtools/run-lessc.sh**, for post-deployment less compilation:
+1. Add **Node.js buildpack** & **package.json**
+   ```json
+   {
+       "name": "node-dependency-installer",
+       "version": "0.1.0",
+       "private": true,
+       "dependencies": {
+           "less": ">=4.2.0",
+           "less-plugin-clean-css": ">=1.5.1"
+       }
+   }
+   ```
+2. Run `npm install`, and add **package.lock.json** to git
+3. You may now remove compiled css files from git
+
 ## 1.7
 - Use `get_localization(...)` to include localizations in a standardized way.
 

@@ -3,5 +3,11 @@
     "type": "library",
     "require": {
         "php": "~8.2"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod +x ./devtools/run-lessc.sh",
+            "./devtools/run-lessc.sh"
+        ]
     }
 }
