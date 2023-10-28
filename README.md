@@ -17,6 +17,9 @@ will be listed here.
        "name": "node-dependency-installer",
        "version": "0.1.0",
        "private": true,
+       "scripts": {
+           "postinstall": "cd commons/devtools && chmod +x run-lessc.sh && ./run-lessc.sh"
+       },
        "dependencies": {
            "less": ">=4.2.0",
            "less-plugin-clean-css": ">=1.5.1"
@@ -24,17 +27,6 @@ will be listed here.
    }
    ```
 2. Run `npm install`, and add **package.lock.json** to git
-3. Add `post-install-cmd` or `compile` script to **composer.json**:
-    ```json
-    {
-        "scripts": {
-            "post-install-cmd": [
-                "chmod +x ./commons/devtools/run-lessc.sh",
-                "./commons/devtools/run-lessc.sh"
-            ]
-        }
-    }
-    ```
 3. You may now remove compiled css files from git
 
 ## 1.7
