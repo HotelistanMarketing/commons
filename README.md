@@ -9,6 +9,9 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 1.9
+Visitor logging. No action is required.
+
 ## 1.8
 **devtools/run-lessc.sh**, for post-deployment less compilation:
 1. Add **Node.js buildpack** & **package.json**

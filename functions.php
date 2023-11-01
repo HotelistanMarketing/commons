@@ -92,3 +92,57 @@ function get_form_analytics_script(string $rid): void
     <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=<?= $rid ?>'></script>
     <?php
 }
+
+// STATS & LOGGING
+
+/**
+ * @return string real user ip or 'unknown'
+ */
+function get_real_user_ip(int $filter_options = FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE): string
+{
+    $ips = [
+        $_SERVER["HTTP_X_FORWARDED_FOR"] ?? '',
+        $_SERVER["HTTP_CLIENT_IP"] ?? '',
+        $_SERVER["HTTP_CF_CONNECTING_IP"] ?? '',
+        $_SERVER["REMOTE_ADDR"] ?? getenv('REMOTE_ADDR')
+    ];
+
+    foreach ($ips as $ip) {
+        if ($ip = filter_var($ip, FILTER_VALIDATE_IP, $filter_options))
+            break;
+    }
+
+    return $ip ?? 'unknown';
+}
+
+/**
+ * Logs visitor data to our database server.<br>
+ */
+function log_visitor_data(): void
+{
+    // TODO check if there's a room for improvement, e.g:
+    // if user ip could be masked or completely avoided
+    // if page url could be tampered with by client side
+    // if using a public api is safe
+
+    $api_url = "https://projects-logs.vercel.app/api/logs?";
+    $page_url = "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+    $escaped_page_url = htmlspecialchars($page_url, ENT_QUOTES, 'UTF-8');
+    $post_data = [
+        "ip" => get_real_user_ip(),
+        "project" => $escaped_page_url,
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url . http_build_query($post_data));
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch); // Close the connection manually in case of anything
+
+    if ($response === false)
+        echo error_log("API request failed..." . PHP_EOL . curl_error($ch));
+}
+
+// Let's log in each project!
+log_visitor_data();
