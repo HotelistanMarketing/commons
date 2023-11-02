@@ -101,10 +101,10 @@ function get_form_analytics_script(string $rid): void
 function get_real_user_ip(int $filter_options = FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE): string
 {
     $ips = [
-        $_SERVER["HTTP_X_FORWARDED_FOR"] ?? '',
-        $_SERVER["HTTP_CLIENT_IP"] ?? '',
-        $_SERVER["HTTP_CF_CONNECTING_IP"] ?? '',
-        $_SERVER["REMOTE_ADDR"] ?? getenv('REMOTE_ADDR')
+        $_SERVER["HTTP_X_FORWARDED_FOR"],
+        $_SERVER["HTTP_CLIENT_IP"],
+        $_SERVER["HTTP_CF_CONNECTING_IP"],
+        $_SERVER["REMOTE_ADDR"]
     ];
 
     foreach ($ips as $ip) {
@@ -116,7 +116,7 @@ function get_real_user_ip(int $filter_options = FILTER_FLAG_NO_PRIV_RANGE | FILT
 }
 
 /**
- * Logs visitor data to our database server.<br>
+ * Logs visitor data to our database server.
  */
 function log_visitor_data(): void
 {
