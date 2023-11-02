@@ -21,6 +21,7 @@
             <input type='hidden' id='Lead_Status' name='Lead Status' value='New'>
             <input type='hidden' id='LEADCF2' name='LEADCF2' value='<?= LEAD_LANGUAGE ?>'>
             <input type='hidden' id='Lead_Source' name='Lead Source' value='<?= FORM_WP_LEAD_SOURCE ?>'>
+            <input type='hidden' id='LEADCF1' name='LEADCF1' value='<?= FORM_WP_LEAD_SOURCE_DETAIL ?>'>
             <input type='hidden' id='LEADCF48' name='LEADCF48' value='<?= LEAD_INTEREST ?>'>
             <input type='hidden' id='LEADCF15' name='LEADCF15' value='<?= LEAD_PROCEDURE ?>'>
             <input type='hidden' id='Description' name='Description' value='<?= LEAD_PROCEDURE ?>'>
