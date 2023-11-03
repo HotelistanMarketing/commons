@@ -141,7 +141,7 @@ function log_visitor_data(): void
     curl_close($ch); // Close the connection manually in case of anything
 
     if ($response === false)
-        echo error_log("API request failed..." . PHP_EOL . curl_error($ch));
+        error_log("API request failed..." . PHP_EOL . curl_error($ch));
 }
 
 // Let's log in each project!
