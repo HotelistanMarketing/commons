@@ -34,6 +34,13 @@ picture {
   line-height: 0; // Remove space underneath images - https://stackoverflow.com/a/31445364
 }
 
+// FORM
+
+// Hide the analytic script's hidden input container which adds extra row-gap to form layouts.
+form div:last-child[id^="wf_tr_"] {
+  display: none;
+}
+
 // WORKAROUND for Chrome's weird bug which triggers transitions on page load
 // Add "preload" class to the body and remove it after the "DOMContentLoaded" event.
 .preload * {
