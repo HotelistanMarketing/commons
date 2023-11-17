@@ -93,6 +93,18 @@ function get_form_analytics_script(string $rid): void
     <?php
 }
 
+/**
+ * @return string webp version of the source if available, or the source itself.
+ */
+function get_webp(string $source): string
+{
+    $dir = pathinfo($source, PATHINFO_DIRNAME);
+    $name = pathinfo($source, PATHINFO_FILENAME);
+    $destination = $dir . '/' . $name . '.webp';
+
+    return file_exists($_SERVER['DOCUMENT_ROOT'] . $destination) ? $destination : $source;
+}
+
 // STATS & LOGGING
 
 /**

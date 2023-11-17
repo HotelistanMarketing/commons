@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.1
+Added `get_webp(...)` function.
+Remove project functions to avoid conflicts.
+
 ## 2.0
 For **wp-form.php** template, 
 add a new `FORM_WP_LEAD_SOURCE_DETAIL` constant.
