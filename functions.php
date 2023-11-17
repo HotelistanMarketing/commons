@@ -105,6 +105,25 @@ function get_webp(string $source): string
     return file_exists($_SERVER['DOCUMENT_ROOT'] . $destination) ? $destination : $source;
 }
 
+function get_pic_source_mq(string $src, bool $variant = false, string $bp = '992px', bool $retina = true): void
+{
+    $src = ($variant ? '/assets/' . VARIANT . '/' : '/assets/') . $src;
+    $srcset = get_webp($src) . ' 1x';
+
+    if ($retina)
+        $srcset .= ', ' . get_webp(get_2x_src($src)) . ' 2x'
+    ?>
+    <source media="(min-width:<?= $bp ?>)" srcset="<?= $srcset ?>">
+    <?php
+}
+
+function get_2x_src(string $src): string
+{
+    $dir = pathinfo($src, PATHINFO_DIRNAME);
+    $name = pathinfo($src, PATHINFO_FILENAME);
+    return $dir . '/' . $name . '@2x.' . pathinfo($src, PATHINFO_EXTENSION);
+}
+
 // STATS & LOGGING
 
 /**
