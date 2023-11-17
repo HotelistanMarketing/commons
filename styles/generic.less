@@ -18,6 +18,11 @@ html {
 
 // GENERICS & COMMONS
 
+main {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
 .container {
   max-width: @page-width;
   margin: 0 auto;
@@ -32,6 +37,28 @@ img {
 
 picture {
   line-height: 0; // Remove space underneath images - https://stackoverflow.com/a/31445364
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:link:not(.button) {
+  text-decoration-color: #0000;
+  text-underline-offset: 0.1em;
+  transition: text-decoration-color 400ms;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.button {
+  min-width: 300px;
+  max-width: fit-content;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
 }
 
 // FORM
