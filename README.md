@@ -10,7 +10,7 @@ Substantial changes (that would possibly require project modifications)
 will be listed here.
 
 ## 2.1
-Added `get_webp(...)` function.
+Added `get_webp(...)`, `get_pic_source_mq(...)`, and `get_2x_src(...)` functions.
 Remove project functions to avoid conflicts.
 
 ## 2.0
