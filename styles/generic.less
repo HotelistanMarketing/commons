@@ -49,7 +49,8 @@ a:link:not(.button) {
   transition: text-decoration-color 400ms;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration-line: underline;
+    text-decoration-color: inherit; // fix Safari not showing text decorations
   }
 }
 
