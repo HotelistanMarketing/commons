@@ -11,6 +11,7 @@ const TRC = array(
 
     // WP FAB
     "wp_fab" => "Contattaci",
+    "wp_message" => "Ciao, vorrei ricevere maggiori informazioni su servizi e prezzi offerti per %s in Turchia.",
 
     // WP FORM
     "wp_form_title" => "Invia un messaggio WhatsApp",

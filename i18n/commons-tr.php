@@ -11,6 +11,7 @@ const TRC = array(
 
     // WP FAB
     "wp_fab" => "Bize ulaşın",
+    "wp_message" => "Merhaba, %s için sunulan hizmetler ve fiyatlar hakkında bilgi almak istiyorum.",
 
     // WP FORM
     "wp_form_title" => "WhatsApp'tan İletişime Geçin",
