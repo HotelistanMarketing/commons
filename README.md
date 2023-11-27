@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.2
+Added a `PRODUCTION` constant whose value is dependent on an env var. 
+Add `HOTELISTAN_DEV_MACHINE` environment variable to distinguish local development from production.
+
 ## 2.1
 Added `get_webp(...)`, `get_pic_source_mq(...)`, and `get_2x_src(...)` functions.
 Remove project functions to avoid conflicts.

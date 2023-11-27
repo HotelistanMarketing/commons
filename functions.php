@@ -1,5 +1,7 @@
 <?php /** @noinspection PhpUnused */
 
+define("PRODUCTION", !getenv('HOTELISTAN_DEV_MACHINE'));
+
 // UTILITY
 
 function trim_phone_number(string $readable_number): string
