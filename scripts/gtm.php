@@ -1,8 +1,10 @@
 <?php
 /*
  * Google Tag Manager head script
- * Requires GTM_ID constant!
  */
+
+assert(defined('GTM_ID'));
+assert(str_starts_with(GTM_ID, 'GTM-'));
 ?>
 
 <?php if (PRODUCTION): ?>

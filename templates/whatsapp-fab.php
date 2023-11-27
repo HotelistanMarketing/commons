@@ -1,3 +1,7 @@
+<?php
+assert(defined('WHATSAPP_LINK'));
+?>
+
 <a id="whatsapp-fab" class="collapsed" href="<?= WHATSAPP_LINK ?>" target="_blank">
     <img src="/commons/assets/wp-white.png" alt="WhatsApp" width="1500" height="1508">
     <span><?= TRC['wp_fab'] ?></span>

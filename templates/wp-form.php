@@ -1,4 +1,15 @@
-<!--suppress HtmlFormInputWithoutLabel -->
+<?php
+assert(defined('FORM_NAME'));
+assert(defined('LEAD_LANGUAGE'));
+assert(defined('FORM_WP_LEAD_SOURCE'));
+assert(defined('FORM_WP_LEAD_SOURCE_DETAIL'));
+assert(defined('LEAD_INTEREST'));
+assert(defined('LEAD_PROCEDURE'));
+assert(defined('FORM_xmIwtLD'));
+assert(defined('FORM_RETURN_URL'));
+assert(defined('TR'));
+?>
+
 <div id="popup-form" class="overlay">
     <div class="popup">
         <h1><?= TRC['wp_form_title'] ?></h1>

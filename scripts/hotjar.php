@@ -1,8 +1,9 @@
 <?php
 /*
- * Hotjar head script
- * Requires HOTJAR_ID constant!
+ * HotJar head script
  */
+
+assert(defined('HOTJAR_ID'));
 ?>
 
 <?php if (PRODUCTION): ?>

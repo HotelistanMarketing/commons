@@ -1,3 +1,7 @@
+<?php
+assert(defined('TR'));
+?>
+
 <a id="whatsapp-fab" onclick="togglePopup()">
     <img src="/commons/assets/wp-white.png" alt="WhatsApp" width="1500" height="1508">
     <span><?= TR['whatsapp_button'] ?></span>

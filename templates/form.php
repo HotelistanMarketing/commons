@@ -1,4 +1,14 @@
-<!--suppress HtmlFormInputWithoutLabel -->
+<?php
+assert(defined('FORM_NAME'));
+assert(defined('LEAD_LANGUAGE'));
+assert(defined('LEAD_SOURCE'));
+assert(defined('LEAD_INTEREST'));
+assert(defined('LEAD_PROCEDURE'));
+assert(defined('FORM_xmIwtLD'));
+assert(defined('FORM_THANK_YOU_PAGE'));
+assert(defined('TR'));
+?>
+
 <form id="contactForm"
       action='https://crm.zoho.com/crm/WebToLeadForm'
       name='<?= FORM_NAME ?>'
