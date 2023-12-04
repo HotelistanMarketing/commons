@@ -11,10 +11,15 @@ $excl_re = defined('IMG_OPT_EXCLUDE_RE') ? constant('IMG_OPT_EXCLUDE_RE') : '/^i
 /**
  * @throws Exception if gd module is not enabled.
  */
-function convertToWebp($src, $quality = 100, $remove_src = false)
+function convertToWebp($src, $quality = 100, $remove_src = false): string|null
 {
     if (!extension_loaded('gd'))
         throw new Exception('Please enable gd first!');
+
+    if (pathinfo($src, PATHINFO_EXTENSION) === 'svg')
+        return null;
+
+    echo PHP_EOL . 'Optimizing ' . $src;
 
     $dir = pathinfo($src, PATHINFO_DIRNAME);
     $name = pathinfo($src, PATHINFO_FILENAME);
@@ -30,8 +35,6 @@ function convertToWebp($src, $quality = 100, $remove_src = false)
         $image = imagecreatefrompng($src);
     else
         return $src;
-
-    echo PHP_EOL . 'Optimizing ' . $src;
 
     if ($has_alpha) { // gd does not create alpha channel by default!
         imagepalettetotruecolor($image);
