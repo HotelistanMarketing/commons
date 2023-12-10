@@ -88,10 +88,10 @@ function get_wp_button(string $text, string $href = null): void
     <?php
 }
 
-function get_form_analytics_script(string $rid): void
+function get_form_analytics_script(string $rid, bool $delay_exec = false): void
 {
     ?>
-    <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=<?= $rid ?>'></script>
+    <script id='wf_anal' <?= $delay_exec ? 'data-' : '' ?>src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=<?= $rid ?>'></script>
     <?php
 }
 

@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.3
+Added **optimize.js**. Use it for lazy JavaScript execution.
+Change existing scripts' `src` attribute with `data-src` to make use of it.
+
 ## 2.2
 Added a `PRODUCTION` constant whose value is dependent on an env var. 
 Add `HOTELISTAN_DEV_MACHINE` environment variable to distinguish local development from production.
