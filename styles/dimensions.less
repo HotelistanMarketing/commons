@@ -1,3 +1,7 @@
+// SKELETON
+@page-width: 1280px;
+@page-padding: 10px;
+
 // QUERY VALUES
 
 @mobile-max-width: 600px; // Extra small devices (phones)
@@ -17,13 +21,42 @@
 @media-retina: ~"(min-resolution:192dpi)";
 
 // MIXINS to merge queries across the project
+// @formatter:off
+
 .mq-mobile() {}
 .mq-non-mobile() {}
 .mq-tablet() {}
 .mq-l-tablet() {}
 .mq-desktop() {}
 .mq-large() {}
+.mq-retina() {}
 
-// SKELETON
-@page-width: 1280px;
-@page-padding: 10px;
+.mq-mobile-critical() {}
+.mq-non-mobile-critical() {}
+.mq-tablet-critical() {}
+.mq-l-tablet-critical() {}
+.mq-desktop-critical() {}
+.mq-large-critical() {}
+.mq-retina-critical() {}
+
+.merge-queries() {
+  @media @media-mobile { .mq-mobile(); }
+  @media @media-tablet { .mq-tablet(); .mq-non-mobile(); }
+  @media @media-tablet { .mq-tablet(); }
+  @media @media-l-tablet { .mq-l-tablet(); }
+  @media @media-desktop { .mq-desktop(); }
+  @media @media-large { .mq-large(); }
+  @media @media-retina { .mq-retina(); }
+}
+
+.merge-critical-queries() {
+  @media @media-mobile { .mq-mobile-critical(); }
+  @media @media-tablet { .mq-tablet-critical(); .mq-non-mobile-critical(); }
+  @media @media-tablet { .mq-tablet-critical(); }
+  @media @media-l-tablet { .mq-l-tablet-critical(); }
+  @media @media-desktop { .mq-desktop-critical(); }
+  @media @media-large { .mq-large-critical(); }
+  @media @media-retina { .mq-retina-critical(); }
+}
+
+// @formatter:on
