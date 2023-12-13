@@ -9,6 +9,9 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.4
+Moved WhatsApp FAB script into **wp-fab.js**. Load it separately.
+
 ## 2.3
 Added **optimize.js**. Use it for lazy JavaScript execution.
 Change existing scripts' `src` attribute with `data-src` to make use of it.
