@@ -1,5 +1,7 @@
 @import "dimensions";
 
+@scroll-snapping: false;
+
 // UNIVERSAL BORDER BOX
 
 html {
@@ -14,15 +16,20 @@ html {
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+
+  & when (@scroll-snapping = true) {
+    scroll-snap-type: y mandatory;
+  }
 }
 
 body {
-  overscroll-behavior-y: none; // fix glitches on Chrome with scroll-snap enabled
+  overscroll-behavior-y: none; // fix glitches on Chrome esp. with scroll-snap enabled
 }
 
 main > section, body > header, body > footer {
-  scroll-snap-align: start;
+  & when (@scroll-snapping = true) {
+    scroll-snap-align: start;
+  }
 }
 
 // NORMALIZE
