@@ -25,7 +25,7 @@ function get_script(string $script, bool $common = false): string
         return $_SERVER['DOCUMENT_ROOT'] . '/scripts/' . $script;
 }
 
-function get_page_style($file_name): string
+function get_page_style(string $file_name): string
 {
     return '/pages/' . basename(dirname($_SERVER['SCRIPT_FILENAME'])) . '/' . $file_name;
 }
