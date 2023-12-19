@@ -79,10 +79,10 @@ function get_preload_style(string $href): void
     <?php
 }
 
-function get_wp_button(string $text, string $href = null): void
+function get_wp_button(string $text, string $href = null, string $class = ''): void
 {
     ?>
-    <a class="button" href="<?= $href ?? WHATSAPP_LINK ?>" target="_blank">
+    <a class="button <?= $class ?>" href="<?= $href ?? WHATSAPP_LINK ?>" target="_blank">
         <?= $text ?>
     </a>
     <?php
