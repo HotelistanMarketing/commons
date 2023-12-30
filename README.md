@@ -9,6 +9,10 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.5
+- **data.php** Use the provided enums instead of string assignments to avoid possible typos.
+- **Autoloader** via Composer - modify include statements accordingly. 
+
 ## 2.4
 Moved WhatsApp FAB script into **wp-fab.js**. Load it separately.
 

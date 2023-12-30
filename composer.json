@@ -4,5 +4,12 @@
   "require": {
     "php": "~8.2",
     "ext-curl": "*"
+  },
+  "optimize-autoloader": true,
+  "autoload": {
+    "files": [
+      "functions.php",
+      "data.php"
+    ]
   }
 }
