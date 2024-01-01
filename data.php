@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace Lead\Language {
     const Arabic = 'Arabic';
