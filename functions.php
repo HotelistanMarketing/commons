@@ -24,6 +24,13 @@ function get_script(string $script, bool $common = false): string
     else
         return $_SERVER['DOCUMENT_ROOT'] . '/scripts/' . $script;
 }
+function get_service(string $script, bool $common = false): string
+{
+    if ($common)
+        return $_SERVER['DOCUMENT_ROOT'] . '/commons/service/' . $script;
+    else
+        return $_SERVER['DOCUMENT_ROOT'] . '/scripts/' . $script;
+}
 
 function get_style(string $file_name, bool $inline = false): string
 {
