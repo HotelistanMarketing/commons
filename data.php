@@ -8,7 +8,7 @@ namespace Lead\Language {
     const Italian = 'İtalian';
     const Spanish = 'Spanish';
     const Swedish = 'Swedish';
-    const Turkish = 'Türkçe';
+    const Turkish = 'Turkish';
 }
 
 namespace Lead\Interest {
