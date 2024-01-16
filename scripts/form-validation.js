@@ -5,10 +5,29 @@ const getWebsite = () => {
      return location.split('?')[0]
 }
 
+const abandonService = async (phoneNumber, website, nameInput, emailInput, leadSource, leadProcedure, leadInterest, leadLanguage) => {
+     await fetch(
+          `https://hotelistan-services.freeddns.org/api/service/abandon?phone=${phoneNumber}&website=${website}&name=${nameInput.value}&email=${emailInput.value}&&lead_source=${leadSource}&lead_lang=${leadLanguage}&lead_procedure=${leadProcedure}&lead_interest=${leadInterest}`,
+          { credentials: 'include' }
+     )
+}
+
+const abandonDeleteHandler = async (validNumber) => {
+     await fetch(`https://hotelistan-services.freeddns.org/api/service/abandon/del?phone=${validNumber}`, {
+          credentials: 'include',
+     })
+     return
+}
+
 document.querySelectorAll('form').forEach((form) => {
      const nameInput = form['Last_Name']
      const mobileInput = form['Phone']
      const emailInput = form['Email']
+     const leadSource = form['Lead_Source'].value
+     const leadProcedure = form['LEADCF15'].value
+     const leadInterest = form['LEADCF48'].value
+     const leadLanguage = form['LEADCF2'].value
+
      const website = getWebsite()
 
      iti = window.intlTelInputGlobals.getInstance(mobileInput)
@@ -17,7 +36,7 @@ document.querySelectorAll('form').forEach((form) => {
           if (event.target.value.trim().length === 0) event.target.value = ''
      })
 
-     // email change handler
+     // email change handler TODO: uncomment when email validation is needed
      //  emailInput.addEventListener('input', async (event) => {
      //       const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
@@ -37,10 +56,7 @@ document.querySelectorAll('form').forEach((form) => {
 
           if (isPhoneNumberValid) {
                const phoneNumber = iti.getNumber()
-               await fetch(
-                    `https://hotelistan-services.freeddns.org/api/service/abandon?phone=${phoneNumber}&website=${website}&name=${nameInput.value}&email=${emailInput.value}`,
-                    { credentials: 'include' }
-               )
+               await abandonService(phoneNumber, website, nameInput, emailInput, leadSource, leadProcedure, leadInterest, leadLanguage)
           }
      })
 
@@ -73,10 +89,7 @@ async function formValidation(form) {
      }
 
      const validNumber = iti.getNumber()
-
-     await fetch(`https://hotelistan-services.freeddns.org/api/service/abandon/del?phone=${validNumber}`, {
-          credentials: 'include',
-     })
+     await abandonDeleteHandler(validNumber)
 
      return isPhoneNumberValid
 }
