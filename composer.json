@@ -1,6 +1,6 @@
 {
   "name": "hotelistan/commons",
-  "type": "library",
+  "type": "custom-library",
   "require": {
     "php": "~8.2",
     "ext-curl": "*"
