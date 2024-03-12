@@ -89,8 +89,10 @@ function get_preload_style(string $href): void
 
 function get_wp_button(string $text, string $href = null, string $class = ''): void
 {
+    // Here we removed target="_blank" to work around a bug,
+    // which was preventing WhatsApp from opening via Chrome on iOS.
     ?>
-    <a class="button <?= $class ?>" href="<?= $href ?? WHATSAPP_LINK ?>" target="_blank">
+    <a class="button <?= $class ?>" href="<?= $href ?? WHATSAPP_LINK ?>">
         <?= $text ?>
     </a>
     <?php
