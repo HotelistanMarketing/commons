@@ -5,7 +5,6 @@ assert(defined('LEAD_SOURCE'));
 assert(defined('LEAD_INTEREST'));
 assert(defined('LEAD_PROCEDURE'));
 assert(defined('FORM_xmIwtLD'));
-assert(defined('FORM_THANK_YOU_PAGE'));
 assert(defined('TR'));
 ?>
 
@@ -36,7 +35,11 @@ assert(defined('TR'));
     <input type='hidden' name='xnQsjsdp' value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
     <input type='hidden' name='xmIwtLD' value='<?= FORM_xmIwtLD ?>'>
     <input type='hidden' name='actionType' value='TGVhZHM='>
-    <input type='hidden' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
+    <?php if (defined('FORM_RETURN_URL')): ?>
+        <input type='hidden' name='returnURL' value='<?= FORM_RETURN_URL ?>'>
+    <?php elseif (defined('FORM_THANK_YOU_PAGE')): ?>
+        <input type='hidden' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
+    <?php endif ?>
 
     <input type='hidden' id='zc_gad' name='zc_gad' value="<?= $_GET['zc_gad'] ?? '' ?>">
     <input type="hidden" id="LEADCF35" name="LEADCF35" value="<?= $_GET['utm_source'] ?? '' ?>">

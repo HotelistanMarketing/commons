@@ -3,18 +3,17 @@ assert(defined('DR_NAME'))
 ?>
 
 <script>
-    const whatsAppLog = async (btn_id, text, isSticky) =>
-        await fetch(`https://hotelistan-services.freeddns.org/api/service/whatsapp?btn_id=${btn_id}&btn_text=${text}&is_sticky=${isSticky}`, {
+    const webServiceURL = 'https://hotelistan-services.freeddns.org/api'
+    const whatsAppLog = async (btnId, text, isSticky) =>
+        await fetch(`${webServiceURL}/service/whatsapp?btn_id=${btnId}&btn_text=${text}&is_sticky=${isSticky}`, {
             credentials: 'include',
         })
 
     const websiteLog = async () => {
-        let location = window.location.href
-        const website = location.split('?')[0]
-        const queries = location.split('?')[1]
+        const [url, params] = window.location.href.split(/\?(.*)/s, 2)
         const lang = document.querySelector('html').getAttribute('lang')
 
-        await fetch(`https://hotelistan-services.freeddns.org/api/tracker?drname=<?= DR_NAME ?>&website=${website}&lang=${lang}&${queries}`, {
+        await fetch(`${webServiceURL}/tracker?drname=<?= DR_NAME ?>&website=${url}&lang=${lang}&${params}`, {
             credentials: 'include',
         })
     }
