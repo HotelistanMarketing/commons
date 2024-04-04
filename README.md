@@ -9,6 +9,11 @@ git submodule add https://github.com/HotelistanMarketing/commons
 Substantial changes (that would possibly require project modifications)
 will be listed here.
 
+## 2.7
+- **form-validation.js** has been updated. Run gulp.
+- Set `LEAD_DR` constant.
+- (Optional) Rename `FORM_THANK_YOU_PAGE` constant as `FORM_RETURN_URL`.
+
 ## 2.6
 - **composer.json** Set `ìnstaller_types` as `["custom-library"]` under "extra".
   Otherwise, Composer won't be able to download commons repo into the project root.

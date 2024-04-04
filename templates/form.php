@@ -4,11 +4,12 @@ assert(defined('LEAD_LANGUAGE'));
 assert(defined('LEAD_SOURCE'));
 assert(defined('LEAD_INTEREST'));
 assert(defined('LEAD_PROCEDURE'));
+assert(defined('LEAD_DR'));
 assert(defined('FORM_xmIwtLD'));
 assert(defined('TR'));
 ?>
 
-<form id="contactForm"
+<form id='contactForm'
       action='https://crm.zoho.com/crm/WebToLeadForm'
       name='<?= FORM_NAME ?>'
       method='POST'
@@ -25,12 +26,11 @@ assert(defined('TR'));
     <input type='email' id='Email' name='Email' maxlength='100' placeholder="<?= TRC['form_mail'] ?>">
 
     <input type='hidden' id='Country' name='Country' maxlength='100' value='DefaultCountry'>
-    <input type='hidden' id='Lead_Status' name='Lead Status' value='New'>
     <input type='hidden' id='LEADCF2' name='LEADCF2' value='<?= LEAD_LANGUAGE ?>'>
     <input type='hidden' id='Lead_Source' name='Lead Source' value='<?= LEAD_SOURCE ?>'>
     <input type='hidden' id='LEADCF48' name='LEADCF48' value='<?= LEAD_INTEREST ?>'>
     <input type='hidden' id='LEADCF15' name='LEADCF15' value='<?= LEAD_PROCEDURE ?>'>
-    <input type='hidden' id='Description' name='Description' value='<?= LEAD_PROCEDURE ?>'>
+    <input type='hidden' id='DR' name='DR' value='<?= LEAD_DR ?>'>
 
     <input type='hidden' name='xnQsjsdp' value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
     <input type='hidden' name='xmIwtLD' value='<?= FORM_xmIwtLD ?>'>
@@ -48,6 +48,7 @@ assert(defined('TR'));
     <input type="hidden" id="LEADCF38" name="LEADCF38" value="<?= $_GET['utm_keyword'] ?? '' ?>">
     <input type="hidden" id="LEADCF39" name="LEADCF39" value="<?= $_GET['utm_network'] ?? '' ?>">
     <input type="hidden" id="LEADCF40" name="LEADCF40" value="<?= $_GET['gclid'] ?? '' ?>">
+    <input type="hidden" id="ip" name="ip" value="<?= get_real_user_ip() ?>">
 
     <button type="submit" id='formsubmit' class='formsubmit button' title='Submit'>
         <?= TR['form_button'] ?>

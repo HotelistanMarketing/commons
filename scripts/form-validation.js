@@ -57,14 +57,14 @@ document.querySelectorAll('form').forEach((form) => {
     })
 
     form.addEventListener('submit', (event) => {
-        formValidation(event, iti)
+        validateForm(event, iti)
     })
 })
 
 /**
  * @returns boolean whether all fields are valid (true) or not (false)
  */
-async function formValidation(event, iti) {
+async function validateForm(event, iti) {
     const form = event.target
     const mobileInput = form['Phone']
     const isPhoneNumberValid = iti.isValidNumber()
@@ -88,7 +88,37 @@ async function formValidation(event, iti) {
 
         const validNumber = iti.getNumber()
         await abandonDeleteHandler(validNumber)
+        await createPatientsRecord(form, validNumber)
     }
 
     return isPhoneNumberValid
+}
+
+async function createPatientsRecord(form, validNumber) {
+    const language = form.querySelector('#LEADCF2').value;
+
+    await fetch(`https://zoho.hotelistan.net/api/form-patient`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: form.querySelector('#Last_Name').value,
+            phone: validNumber,
+            email: form.querySelector('#Email').value,
+            lead_source: 'Google/Web Form',
+            language: language,
+            source_language: language,
+            interest: [form.querySelector('#LEADCF48').value],
+            procedure: [form.querySelector('#LEADCF15').value],
+            doctor: form.querySelector('#DR').value,
+            utm_source: form.querySelector('#LEADCF35').value,
+            utm_medium: form.querySelector('#LEADCF36').value,
+            utm_matchtype: form.querySelector('#LEADCF37').value,
+            utm_keyword: form.querySelector('#LEADCF38').value,
+            utm_network: form.querySelector('#LEADCF39').value,
+            gclid: form.querySelector('#LEADCF40').value,
+            ip:  form.querySelector('#ip').value,
+        }),
+    });
 }

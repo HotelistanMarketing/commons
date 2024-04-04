@@ -137,34 +137,29 @@ function get_2x_src(string $src): string
 }
 
 
-
-
-
-
-
 // visitor data logging moved to the client side
 
-// // STATS & LOGGING
+// STATS & LOGGING
 
-// /**
-//  * @return string real user ip or 'unknown'
-//  */
-// function get_real_user_ip(int $filter_options = FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE): string
-// {
-//     $ips = [
-//         $_SERVER["HTTP_X_FORWARDED_FOR"] ?? '',
-//         $_SERVER["HTTP_CLIENT_IP"] ?? '',
-//         $_SERVER["HTTP_CF_CONNECTING_IP"] ?? '',
-//         $_SERVER["REMOTE_ADDR"] ?? '',
-//     ];
+/**
+ * @return string real user ip or 'unknown'
+ */
+function get_real_user_ip(int $filter_options = FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE): string
+{
+    $ips = [
+        $_SERVER["HTTP_X_FORWARDED_FOR"] ?? '',
+        $_SERVER["HTTP_CLIENT_IP"] ?? '',
+        $_SERVER["HTTP_CF_CONNECTING_IP"] ?? '',
+        $_SERVER["REMOTE_ADDR"] ?? '',
+    ];
 
-//     foreach ($ips as $ip) {
-//         if ($ip = filter_var($ip, FILTER_VALIDATE_IP, $filter_options))
-//             break;
-//     }
+    foreach ($ips as $ip) {
+        if ($ip = filter_var($ip, FILTER_VALIDATE_IP, $filter_options))
+            break;
+    }
 
-//     return $ip ?? 'unknown';
-// }
+    return $ip ?? '';
+}
 
 // /**
 //  * Logs visitor data to our database server.
