@@ -65,6 +65,8 @@ document.querySelectorAll('form').forEach((form) => {
  * @returns boolean whether all fields are valid (true) or not (false)
  */
 async function validateForm(event, iti) {
+    event.preventDefault()
+
     const form = event.target
     const mobileInput = form['Phone']
     const isPhoneNumberValid = iti.isValidNumber()
@@ -91,7 +93,7 @@ async function validateForm(event, iti) {
         await createPatientsRecord(form, validNumber)
     }
 
-    return isPhoneNumberValid
+    form.submit()
 }
 
 async function createPatientsRecord(form, validNumber) {
