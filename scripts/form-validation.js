@@ -74,7 +74,7 @@ async function validateForm(event, iti) {
     if (!isPhoneNumberValid) {
         mobileInput.setCustomValidity(mobileInput.getAttribute('data-warning-msg'))
         mobileInput.reportValidity()
-        event.preventDefault()
+        return
     }
     else {
         const nameInput = form['Last_Name']
