@@ -1,20 +1,13 @@
 <?php
-assert(defined('FORM_NAME'));
 assert(defined('LEAD_LANGUAGE'));
 assert(defined('LEAD_SOURCE'));
 assert(defined('LEAD_INTEREST'));
 assert(defined('LEAD_PROCEDURE'));
 assert(defined('LEAD_DR'));
-assert(defined('FORM_xmIwtLD'));
 assert(defined('TR'));
 ?>
 
-<form id='contactForm'
-      action='https://crm.zoho.com/crm/WebToLeadForm'
-      name='<?= FORM_NAME ?>'
-      method='POST'
-      accept-charset='UTF-8'>
-
+<form id='contactForm'>
     <label for='Last_Name'><?= TRC['form_name'] ?></label>
     <input type='text' id='Last_Name' name='Name' maxlength='30' placeholder="<?= TRC['form_name'] ?>" required>
 
@@ -32,15 +25,6 @@ assert(defined('TR'));
     <input type='hidden' name='Procedure' value='<?= LEAD_PROCEDURE ?>'>
     <input type='hidden' name='Doctor' value='<?= LEAD_DR ?>'>
 
-    <input type='hidden' name='xnQsjsdp' value='f26b68fc575ddfcaee437b8e12d5515126eae05cf5d1a5976d576056a6237774'>
-    <input type='hidden' name='xmIwtLD' value='<?= FORM_xmIwtLD ?>'>
-    <input type='hidden' name='actionType' value='TGVhZHM='>
-    <?php if (defined('FORM_RETURN_URL')): ?>
-        <input type='hidden' name='returnURL' value='<?= FORM_RETURN_URL ?>'>
-    <?php elseif (defined('FORM_THANK_YOU_PAGE')): ?>
-        <input type='hidden' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
-    <?php endif ?>
-
     <input type='hidden' name='zc_gad' value="<?= $_GET['zc_gad'] ?? '' ?>">
     <input type="hidden" name="utm_source" value="<?= $_GET['utm_source'] ?? '' ?>">
     <input type="hidden" name="utm_medium" value="<?= $_GET['utm_medium'] ?? '' ?>">
@@ -49,6 +33,12 @@ assert(defined('TR'));
     <input type="hidden" name="utm_network" value="<?= $_GET['utm_network'] ?? '' ?>">
     <input type="hidden" name="gclid" value="<?= $_GET['gclid'] ?? '' ?>">
     <input type="hidden" name="ip" value="<?= get_real_user_ip() ?>">
+
+    <?php if (defined('FORM_RETURN_URL')): ?>
+        <input type='hidden' name='returnURL' value='<?= FORM_RETURN_URL ?>'>
+    <?php elseif (defined('FORM_THANK_YOU_PAGE')): ?>
+        <input type='hidden' name='returnURL' value='<?= FORM_THANK_YOU_PAGE ?>'>
+    <?php endif ?>
 
     <button type="submit" id='formsubmit' class='formsubmit button' title='Submit'>
         <?= TR['form_button'] ?>

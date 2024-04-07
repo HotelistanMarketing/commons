@@ -74,6 +74,7 @@ async function validateForm(form, iti) {
     await createPatientsRecord(form, validNumber)
 
     form.submit()
+    window.location.href = form['returnURL'].value
 }
 
 async function createPatientsRecord(form, validNumber) {
