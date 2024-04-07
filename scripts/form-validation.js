@@ -56,18 +56,16 @@ document.querySelectorAll('form').forEach((form) => {
         }
     })
 
-    form.addEventListener('submit', (event) => {
-        validateForm(event, iti)
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        await validateForm(event.target, iti)
     })
 })
 
 /**
  * @returns boolean whether all fields are valid (true) or not (false)
  */
-async function validateForm(event, iti) {
-    event.preventDefault()
-
-    const form = event.target
+async function validateForm(form, iti) {
     const mobileInput = form['Phone']
     const isPhoneNumberValid = iti.isValidNumber()
 
