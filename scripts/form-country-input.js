@@ -1,6 +1,6 @@
 document.querySelectorAll("form").forEach(form => {
     const mobileInput = form.querySelector("#Phone");
-    const countryInput = form.querySelector("#Country");
+    const countryInput = form['Country'];
     const iti = window.intlTelInput(mobileInput, {
         initialCountry: "auto",
         autoPlaceholder: "polite",

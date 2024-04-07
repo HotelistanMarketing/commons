@@ -1,59 +1,21 @@
-const getWebsiteBaseURL = () => {
-    const location = window.location.href
-    return location.split('?')[0]
-}
-
-const abandonService = async (phoneNumber, website, nameInput, emailInput, leadSource, leadProcedure, leadInterest, leadLanguage) => {
-    await fetch(
-        `https://hotelistan-services.freeddns.org/api/service/abandon?phone=${phoneNumber}&website=${website}&name=${nameInput.value}&email=${emailInput.value}&&lead_source=${leadSource}&lead_lang=${leadLanguage}&lead_procedure=${leadProcedure}&lead_interest=${leadInterest}`,
-        {credentials: 'include'}
-    )
-}
-
-const abandonDeleteHandler = async (validNumber) => {
-    await fetch(`https://hotelistan-services.freeddns.org/api/service/abandon/del?phone=${validNumber}`, {
-        credentials: 'include',
-    })
-}
+const API_URL = 'https://hotelistan-services.freeddns.org/api';
+const ZOHO_API_URL = 'https://zoho.hotelistan.net/api/form-patient';
 
 document.querySelectorAll('form').forEach((form) => {
-    const nameInput = form['Last_Name']
+    const nameInput = form['Name']
     const mobileInput = form['Phone']
-    const emailInput = form['Email']
-    const leadSource = form['Lead_Source'].value
-    const leadProcedure = form['LEADCF15'].value
-    const leadInterest = form['LEADCF48'].value
-    const leadLanguage = form['LEADCF2'].value
-
-    const website = getWebsiteBaseURL()
     const iti = window.intlTelInputGlobals.getInstance(mobileInput)
 
     nameInput.addEventListener('input', (event) => {
-        if (event.target.value.trim().length === 0) event.target.value = ''
+        if (event.target.value.trim().length === 0)
+            event.target.value = ''
     })
 
-    // email change handler TODO: uncomment when email validation is needed
-    //  emailInput.addEventListener('input', async (event) => {
-    //       const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-
-    //       if (event.target.value.match(validRegex) && iti.isValidNumber()) {
-    //            const validNumber = iti.getNumber()
-
-    //            await fetch(
-    //                 `https://hotelistan-services.freeddns.org/api/service/abandon?phone=${validNumber}&website=${website}&name=${nameInput.value}&email=${event.target.value}`
-    //            )
-    //       }
-    //  })
-
-    // phone change handler
     mobileInput.addEventListener('input', async (event) => {
         event.target.setCustomValidity('')
-        const isPhoneNumberValid = iti.isValidNumber()
 
-        if (isPhoneNumberValid) {
-            const phoneNumber = iti.getNumber()
-            await abandonService(phoneNumber, website, nameInput, emailInput, leadSource, leadProcedure, leadInterest, leadLanguage)
-        }
+        if (iti.isValidNumber())
+            await abandonService(nameInput.value, iti.getNumber(), form)
     })
 
     form.addEventListener('submit', async (event) => {
@@ -62,63 +24,83 @@ document.querySelectorAll('form').forEach((form) => {
     })
 })
 
+const abandonService = async (name, phone, form) => {
+    const params = new URLSearchParams({
+        name: name,
+        phone: phone,
+        email: form['Email'].value,
+        lead_lang: form['Language'].value,
+        lead_source: form['Source'].value,
+        lead_interest: form['Interest'].value,
+        lead_procedure: form['Procedure'].value,
+        website: `${window.location.origin}${window.location.pathname}`,
+    });
+
+    await fetch(`${API_URL}/service/abandon?${params.toString()}`, {
+        credentials: 'include'
+    });
+}
+
+const abandonDeleteHandler = async (validNumber) => {
+    await fetch(`${API_URL}/service/abandon/del?phone=${validNumber}`, {
+        credentials: 'include'
+    })
+}
+
 /**
  * @returns boolean whether all fields are valid (true) or not (false)
  */
 async function validateForm(form, iti) {
-    const mobileInput = form['Phone']
-    const isPhoneNumberValid = iti.isValidNumber()
-
-    if (!isPhoneNumberValid) {
+    if (!iti.isValidNumber()) {
+        const mobileInput = form['Phone']
         mobileInput.setCustomValidity(mobileInput.getAttribute('data-warning-msg'))
         mobileInput.reportValidity()
         return
     }
-    else {
-        const nameInput = form['Last_Name']
-        nameInput.value = nameInput.value.trim()
 
-        if (nameInput.value.length === 0 && !nameInput.required) {
-            // Empty values are displayed as 'Not Provided' on Zoho, but...
-            // The King of the Lead Managers, Mr. Alperen, requested us to make it 'Unknown'.
-            // So, submit empty value as 'Unknown' without showing it to user:
-            nameInput.style.color = 'transparent'
-            nameInput.value = 'Unknown'
-        }
+    const nameInput = form['Name']
+    nameInput.value = nameInput.value.trim()
 
-        const validNumber = iti.getNumber()
-        await abandonDeleteHandler(validNumber)
-        await createPatientsRecord(form, validNumber)
+    if (nameInput.value.length === 0 && !nameInput.required) {
+        // Empty values are displayed as 'Not Provided' on Zoho, but...
+        // The King of the Lead Managers, Mr. Alperen, requested us to make it 'Unknown'.
+        // So, submit empty value as 'Unknown' without showing it to user:
+        nameInput.style.color = 'transparent'
+        nameInput.value = 'Unknown'
     }
+
+    const validNumber = iti.getNumber()
+    await abandonDeleteHandler(validNumber)
+    await createPatientsRecord(form, validNumber)
 
     form.submit()
 }
 
 async function createPatientsRecord(form, validNumber) {
-    const language = form.querySelector('#LEADCF2').value;
+    const language = form['Language'].value;
 
-    await fetch(`https://zoho.hotelistan.net/api/form-patient`, {
+    await fetch(ZOHO_API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name: form.querySelector('#Last_Name').value,
+            name: form['Name'].value,
             phone: validNumber,
-            email: form.querySelector('#Email').value,
+            email: form['Email'].value,
             lead_source: 'Google/Web Form',
             language: language,
             source_language: language,
-            interest: [form.querySelector('#LEADCF48').value],
-            procedure: [form.querySelector('#LEADCF15').value],
-            doctor: form.querySelector('#DR').value,
-            utm_source: form.querySelector('#LEADCF35').value,
-            utm_medium: form.querySelector('#LEADCF36').value,
-            utm_matchtype: form.querySelector('#LEADCF37').value,
-            utm_keyword: form.querySelector('#LEADCF38').value,
-            utm_network: form.querySelector('#LEADCF39').value,
-            gclid: form.querySelector('#LEADCF40').value,
-            ip:  form.querySelector('#ip').value,
+            interest: [form['Interest'].value],
+            procedure: [form['Procedure'].value],
+            doctor: form['Doctor'].value,
+            utm_source: form['utm_source'].value,
+            utm_medium: form['utm_medium'].value,
+            utm_matchtype: form['utm_matchtype'].value,
+            utm_keyword: form['utm_keyword'].value,
+            utm_network: form['utm_network'].value,
+            gclid: form['gclid'].value,
+            ip: form['ip'].value,
         }),
     });
 }
