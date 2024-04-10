@@ -20,7 +20,16 @@ document.querySelectorAll('form').forEach((form) => {
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault()
-        await validateForm(event.target, iti)
+
+        if (!validateForm(form, iti.isValidNumber()))
+            return
+
+        const validNumber = iti.getNumber()
+        await createPatientsRecord(form, validNumber)
+        await abandonDeleteHandler(validNumber)
+
+        form.submit()
+        window.location.href = form['returnURL'].value
     })
 })
 
@@ -50,12 +59,12 @@ const abandonDeleteHandler = async (validNumber) => {
 /**
  * @returns boolean whether all fields are valid (true) or not (false)
  */
-async function validateForm(form, iti) {
-    if (!iti.isValidNumber()) {
+function validateForm(form, isValidNumber) {
+    if (!isValidNumber) {
         const mobileInput = form['Phone']
         mobileInput.setCustomValidity(mobileInput.getAttribute('data-warning-msg'))
         mobileInput.reportValidity()
-        return
+        return false
     }
 
     const nameInput = form['Name']
@@ -69,12 +78,7 @@ async function validateForm(form, iti) {
         nameInput.value = 'Unknown'
     }
 
-    const validNumber = iti.getNumber()
-    await abandonDeleteHandler(validNumber)
-    await createPatientsRecord(form, validNumber)
-
-    form.submit()
-    window.location.href = form['returnURL'].value
+    return true
 }
 
 async function createPatientsRecord(form, validNumber) {
