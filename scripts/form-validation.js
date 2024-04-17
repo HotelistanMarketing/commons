@@ -32,7 +32,7 @@ document.querySelectorAll('form').forEach((form) => {
         await abandonDeleteHandler(validNumber)
 
         form.submit()
-        submitButton.setAttribute('disabled', 'false')
+        submitButton.removeAttribute('disabled')
         window.location.href = form['returnURL'].value
     })
 })
