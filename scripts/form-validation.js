@@ -24,14 +24,15 @@ document.querySelectorAll('form').forEach((form) => {
         if (!validateForm(form, iti.isValidNumber()))
             return
 
-        var submitButton = form.querySelector('button[type="submit"]')
-        submitButton.setAttribute("disabled", "true")
+        const submitButton = form.querySelector('button[type="submit"]')
+        submitButton.setAttribute('disabled', 'true')
 
         const validNumber = iti.getNumber()
         await createPatientsRecord(form, validNumber)
         await abandonDeleteHandler(validNumber)
 
         form.submit()
+        submitButton.setAttribute('disabled', 'false')
         window.location.href = form['returnURL'].value
     })
 })
