@@ -14,8 +14,9 @@ document.querySelectorAll('form').forEach((form) => {
     mobileInput.addEventListener('input', async (event) => {
         event.target.setCustomValidity('')
 
-        if (iti.isValidNumber())
-            await abandonService(nameInput.value, iti.getNumber(), form)
+        // TODO: Uncomment the following lines to enable form abandon service
+        // if (iti.isValidNumber())
+        //    await abandonService(nameInput.value, iti.getNumber(), form)
     })
 
     form.addEventListener('submit', async (event) => {
@@ -29,7 +30,8 @@ document.querySelectorAll('form').forEach((form) => {
 
         const validNumber = iti.getNumber()
         await createPatientsRecord(form, validNumber)
-        await abandonDeleteHandler(validNumber)
+        // await abandonDeleteHandler(validNumber)
+        // TODO: Uncomment the above line to enable abandon delete handler
 
         form.submit()
         submitButton.removeAttribute('disabled')
@@ -37,6 +39,7 @@ document.querySelectorAll('form').forEach((form) => {
     })
 })
 
+// noinspection JSUnusedGlobalSymbols
 const abandonService = async (name, phone, form) => {
     const params = new URLSearchParams({
         name: name,
@@ -54,6 +57,7 @@ const abandonService = async (name, phone, form) => {
     });
 }
 
+// noinspection JSUnusedGlobalSymbols
 const abandonDeleteHandler = async (validNumber) => {
     await fetch(`${API_URL}/service/abandon/del?phone=${validNumber}`, {
         credentials: 'include'
