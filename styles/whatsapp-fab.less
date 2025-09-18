@@ -19,6 +19,7 @@
   line-height: 24px;
   text-decoration: none;
   transition: filter .4s, column-gap .1s;
+  animation: buttonAnimation 2s linear infinite;
 
   &:hover {
     filter: brightness(110%);
@@ -44,5 +45,21 @@
         max-width: 0;
       }
     }
+  }
+}
+
+@keyframes buttonAnimation {
+  0% {
+    box-shadow: 0 0 0 0 rgb(0 175 143), 0 0 0 0 rgb(0 175 143);
+  }
+
+  40% {
+    box-shadow: 0 0 0 25px rgb(0 211 116 / 0%), 0 0 0 0 rgb(0 175 143);
+  }
+  80% {
+    box-shadow: 0 0 0 30px rgb(255 0 64 / 0%), 0 0 0 15px rgb(255 0 64 / 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 0 64 / 0%), 0 0 0 15px rgb(255 0 64 / 0%);
   }
 }
