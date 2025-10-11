@@ -47,7 +47,7 @@
     <?php include get_script('logs.php', common: true) ?>
     
     <?php if (str_contains($_SERVER['HTTP_HOST'], 'dentfixinternational.com') && $_SERVER['REQUEST_URI'] === '/dental-implant-in-turkey-ru/'): ?>
-    <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counterr -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
