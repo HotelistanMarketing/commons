@@ -24,6 +24,14 @@ assert(defined('TR'));
     <input type='hidden' name='Interest' value='<?= LEAD_INTEREST ?>'>
     <input type='hidden' name='Procedure' value='<?= LEAD_PROCEDURE ?>'>
     <input type='hidden' name='Doctor' value='<?= LEAD_DR ?>'>
+    
+    <?php if (defined('LEAD_SOURCE_DETAIL')): ?>
+        <input type='hidden' name='<?= LEAD_SOURCE_DETAIL_API ?? 'Single_Line_5' ?>' value='<?= LEAD_SOURCE_DETAIL ?>'>
+    <?php endif ?>
+    
+    <?php if (defined('LEAD_SOURCE_API')): ?>
+        <input type='hidden' name='<?= LEAD_SOURCE_API ?>' value='<?= LEAD_SOURCE ?>'>
+    <?php endif ?>
 
     <input type='hidden' name='zc_gad' value="<?= $_GET['zc_gad'] ?? '' ?>">
     <input type="hidden" name="utm_source" value="<?= $_GET['utm_source'] ?? '' ?>">
