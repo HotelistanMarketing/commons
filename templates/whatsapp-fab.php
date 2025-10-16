@@ -3,7 +3,7 @@ assert(defined('WHATSAPP_LINK'));
 ?>
 
 <?php
-// Here we removed target="_blank" to work around a bug,
+// Here we removed target="_blank" to work around a bug,s
 // which was preventing WhatsApp from opening via Chrome on iOS.
 ?>
 <a id="whatsapp-fab" class="collapsed" href="<?= WHATSAPP_LINK ?>">
