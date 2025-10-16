@@ -2,6 +2,7 @@
 
 namespace Lead\Language {
     const Arabic = 'Arabic';
+    const Bulgarian = 'Bulgarian'; 
     const English = 'English';
     const French = 'French';
     const German = 'German';
